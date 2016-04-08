@@ -14,7 +14,7 @@ if __name__ == "__main__":
     #mode = sys.argv[1]
     #beta = float(sys.argv[2])
     mode = 'facebook'
-    beta = 0.99
+    beta = 0.0
     
     do_plot = True
     do_dump = False

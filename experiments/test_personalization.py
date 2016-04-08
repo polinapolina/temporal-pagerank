@@ -12,7 +12,7 @@ if __name__ == "__main__":
     
     #mode = sys.argv[1]
     #mode = 'SFree'
-    mode = 'twitter'
+    mode = 'facebook'
     
     do_plot = True
     do_dump = False

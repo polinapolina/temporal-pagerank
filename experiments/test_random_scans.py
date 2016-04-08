@@ -58,10 +58,10 @@ if __name__ == "__main__":
 
     if do_plot:    
         plt.figure('one sweep '+ mode)        
-        plt.plot(rng, pearson, 'k--')
-        plt.plot(rng, spearman, 'k-')
-        #plt.plot(rng, tau, 'k-.')
-        plt.plot(rng, error, 'k:')
+        plt.plot(rng, array_pearson, 'k--')
+        plt.plot(rng, array_spearman, 'k-')
+        #plt.plot(rng, array_tau, 'k-.')
+        plt.plot(rng, array_error, 'k:')
 
         plt.xlabel('number of scans', fontsize=25)
         plt.ylim((0, 1))

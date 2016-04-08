@@ -16,6 +16,7 @@ if __name__ == "__main__":
     
     n = 100 #number of nodes in the graph
     iters = 100000 #number of temporal edges in the graph
+    alpha = 0.85
     
     gamma = 1.0
 
@@ -26,15 +27,15 @@ if __name__ == "__main__":
         
     colors = ['k', 'r', 'b', 'g']
     styles = ['-', '--', ':', '-.']
-    betas = [0.0, 0.1, 0.5, 0.9]
+    betas = [0.1, 0.5, 0.9, 1.0]
     
     plt.rcParams.update({'font.size': 20, 'lines.linewidth': 3})
     plt.rcParams['xtick.labelsize'] = 20
     plt.rcParams['ytick.labelsize'] = 25
     plt.figure('beta')
     
-    for i in xrange(len(betas)):
-        beta = betas[i]
+    for j in xrange(len(betas)):
+        beta = betas[j]
         G = allutils.graph_generator.weighted_DiGraph(n, seed = 1.0, mode = mode, weights = weights)
         norm = sum(G.out_degree(weight='weight').values())
         sampling_edges = {e[:-1]: e[-1]['weight']/norm for e in G.edges_iter(data=True)}
@@ -46,13 +47,13 @@ if __name__ == "__main__":
         RS, current = {}, {}
         RS, current, tau, spearman, pearson, error, x = flowPR(p_prime_nodes, pr_basic, stream, RS, current, iters = iters, beta = beta, gamma = gamma)
 
-        plt.plot(pearson, color=colors[i], linestyle = styles[i])
-    
+        plt.plot(pearson, color=colors[j], linestyle = styles[j])
     
 
     leg = []
-    for i in betas:
-        leg += ['beta='+str(i)]
+    for i in xrange(len(betas)):
+        beta = betas[i]
+        leg += ['beta='+str(beta)]
 
     plt.legend(leg, loc=0)
     plt.ylim((0, 1.0))
